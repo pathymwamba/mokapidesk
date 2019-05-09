@@ -66,13 +66,4 @@ public class DAOSortie extends DAO<Sortie> {
         return null;
     }
 
-    public static void main(String[] args){
-        DAOSortie srt = new DAOSortie();
-        Sortie s = new Sortie(2, 2, 3, 4550);
-        if(srt.delete(s)){
-            System.out.println("delete fonctionnelle !!");
-        }else{
-            System.out.println("Echec delete !!!");
-        }
-    }
 }
