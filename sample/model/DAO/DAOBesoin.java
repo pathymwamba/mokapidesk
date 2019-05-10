@@ -1,20 +1,20 @@
 package sample.model.DAO;
 
-import sample.model.CategorieSortie;
+import sample.model.Besoin;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DAOCategorieSortie extends DAO<CategorieSortie> {
+public class DAOBesoin extends DAO<Besoin> {
 
-    public DAOCategorieSortie(){
+    public DAOBesoin(){
         super();
     }
 
     @Override
-    public boolean create(CategorieSortie categorieSortie) {
+    public boolean create(Besoin besoin) {
         try{
-            String requete = "insert into categoriesortie(nom) values('"+categorieSortie.getNom()+"')";
+            String requete = "insert into besoin(nom, priorite, frequence) values('"+ besoin.getNom()+"','"+besoin.getPriorite()+"','"+besoin.getFrequence()+"')";
             this.connexion.getStmt().executeUpdate(requete);
             return true;
 
@@ -25,9 +25,10 @@ public class DAOCategorieSortie extends DAO<CategorieSortie> {
     }
 
     @Override
-    public boolean update(CategorieSortie categorieSortie) {
+    public boolean update(Besoin besoin) {
         try{
-            String requete = "update categoriesortie set nom='"+categorieSortie.getNom()+"' WHERE idcategorie="+categorieSortie.getId();
+            String requete = "update besoin set nom='"+ besoin.getNom()+"',priorite='"+
+                    besoin.getPriorite()+"',frequence='"+besoin.getFrequence()+"' WHERE idbesoin="+ besoin.getId();
             this.connexion.getStmt().executeUpdate(requete);
             return true;
 
@@ -38,9 +39,9 @@ public class DAOCategorieSortie extends DAO<CategorieSortie> {
     }
 
     @Override
-    public boolean delete(CategorieSortie categorieSortie) {
+    public boolean delete(Besoin besoin) {
         try{
-            String requete = "delete from categoriesortie WHERE idcategorie="+categorieSortie.getId();
+            String requete = "delete from besoin WHERE idbesoin="+ besoin.getId();
             this.connexion.getStmt().executeUpdate(requete);
             return true;
 
@@ -51,13 +52,13 @@ public class DAOCategorieSortie extends DAO<CategorieSortie> {
     }
 
     @Override
-    public CategorieSortie find(int id) {
-        CategorieSortie cats;
+    public Besoin find(int id) {
+        Besoin cats;
         try{
-            String requete ="select * from categoriesortie WHERE idcategorie="+id;
+            String requete ="select * from besoin WHERE idbesoin="+id;
             ResultSet result = this.connexion.getStmt().executeQuery(requete);
             if(result.first()){
-                cats = new CategorieSortie(Integer.parseInt(result.getString("idcategorie")), result.getString("nom"));
+                cats = new Besoin(Integer.parseInt(result.getString("idbesoin")), result.getString("nom"), result.getString("priorite"), result.getString("frequence"));
                 return cats;
             }
         }catch (SQLException e){
@@ -65,4 +66,5 @@ public class DAOCategorieSortie extends DAO<CategorieSortie> {
         }
         return null;
     }
+
 }
