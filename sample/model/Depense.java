@@ -7,13 +7,15 @@ public class Depense {
     private double montant_utilise;
     private String motif;
     private String date;
+    private int etat = 0;
 
-    public Depense(int id, int idSortie, double montant_utilise, String motif, String date) {
+    public Depense(int id, int idSortie, double montant_utilise, String motif, String date, int etat) {
         this.id = id;
         this.idSortie = idSortie;
         this.montant_utilise = montant_utilise;
         this.motif = motif;
         this.date = date;
+        this.etat = etat;
     }
 
     public int getId() {
@@ -54,5 +56,13 @@ public class Depense {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
     }
 }
