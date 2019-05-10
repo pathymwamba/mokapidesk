@@ -2,13 +2,13 @@ package sample.model;
 //Depense qu'on prevois d'effectuer au courant de l'exercice
 public class Sortie {
     private int id = 0;
-    private int idCategorieSortie;
+    private int idBesoin;
     private int idExercice;
     private double montant;
 
-    public Sortie(int id, int idCategorieSortie, int idExercice, double montant) {
+    public Sortie(int id, int idBesoin, int idExercice, double montant) {
         this.id = id;
-        this.idCategorieSortie = idCategorieSortie;
+        this.idBesoin = idBesoin;
         this.idExercice = idExercice;
         this.montant = montant;
     }
@@ -21,12 +21,12 @@ public class Sortie {
         this.id = id;
     }
 
-    public int getIdCategorieSortie() {
-        return idCategorieSortie;
+    public int getIdBesoin() {
+        return idBesoin;
     }
 
-    public void setIdCategorieSortie(int idCategorieSortie) {
-        this.idCategorieSortie = idCategorieSortie;
+    public void setIdBesoin(int idBesoin) {
+        this.idBesoin = idBesoin;
     }
 
     public int getIdExercice() {
